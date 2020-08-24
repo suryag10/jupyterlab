@@ -998,6 +998,7 @@ export class KernelConnection implements Kernel.IKernelConnection {
     // We do this with a setTimeout so that it comes after the microtask
     // logic in _handleMessage for restarting/autostarting status updates.
     setTimeout(() => {
+      void this.reconnect();
       void this.requestKernelInfo();
     }, 0);
   }
